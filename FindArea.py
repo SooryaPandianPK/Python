@@ -1,6 +1,6 @@
 #Author : Soorya Pandian 
 def FindArea(path):
-    #Given a path of stl file, this function calculates the surface area
+    """Given a path of stl file, this function calculates the surface area"""
     with open(path,"r") as file:
         linelist = file.readlines()
         totallist=[]
@@ -39,3 +39,4 @@ def FindArea(path):
     return SurfaceArea
 
 print("The total surface area is ",FindArea("A:\personal\sphere1 3.stl"),"m^2")
+
