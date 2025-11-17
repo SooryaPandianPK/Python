@@ -1,0 +1,34 @@
+from hwx import gui
+
+def onclick(event):
+  if(event.value != "="):
+   input.value += event.value
+  else:
+   split(input.value)
+ 
+def split(s):
+ for op in "+-*/":
+    if op in s:
+        a, b = s.split(op)
+        a, b = float(a), float(b)
+        input.value=calculate(a, op, b)
+        break
+  
+def calculate(a, op, b):
+    return {
+        '+': a + b,
+        '-': a - b,
+        '*': a * b,
+        '/': a / b,
+    }[op]
+
+input = gui.LineEdit(placeHolderText='Type Here')   
+vframe = gui.VFrame( (input),(gui.Button("1",command=onclick),gui.Button("2",command=onclick),gui.Button("3",command=onclick), gui.Button("/",command=onclick)),
+  (gui.Button("4",command=onclick),gui.Button("5",command=onclick),gui.Button("6",command=onclick), gui.Button("*",command=onclick)),
+  (gui.Button("7",command=onclick),gui.Button("8",command=onclick),gui.Button("9",command=onclick), gui.Button("-",command=onclick)),
+  (gui.Button(".",command=onclick),gui.Button("0",command=onclick),gui.Button("=",command=onclick) ,gui.Button("+",command=onclick)))
+
+show(vframe)
+
+
+
